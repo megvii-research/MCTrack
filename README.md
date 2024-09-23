@@ -1,6 +1,5 @@
 # MCTrack
 
----
 
 This is the official repo release of the paper [MCTrack: Unified 3D Multi-Object Tracking Framework for Autonomous]()
 
