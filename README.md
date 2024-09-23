@@ -11,13 +11,9 @@ This paper introduces MCTrack, a new 3D multi-object tracking method that achiev
 ## 1. News
 
 - 2024-××-××. The code will be released soon.🙌
-  
 - 2024-09-24. MCTrack is released on [arXiv](https://arxiv.org/)😘.
-  
 - 2024-09-01. We rank **2th** among all methods on **Waymo** Dataset for [MOT](http://www.cvlibs.net/datasets/kitti/eval_tracking.php)😊.
-  
 - 2024-08-30. We rank **1th** among all methods on **KITTI** Dataset for [MOT](http://www.cvlibs.net/datasets/kitti/eval_tracking.php)😁.
-  
 - 2024-08-27. We rank **1th** among all methods on **nuScenes** Dataset for [MOT](http://www.cvlibs.net/datasets/kitti/eval_tracking.php)😀.
   
 
@@ -57,7 +53,10 @@ TBD
 
 TBD
 
-## 5. Acknowledgement
+## 5. Evaluation
+TBD
+
+## 6. Acknowledgement
 
 - In the detection part, many thanks to the following open-source projects:
   
@@ -74,4 +73,4 @@ TBD
   - [Poly-MOT]([GitHub - lixiaoyu2000/Poly-MOT: Official Repo For IROS 2023 Accepted Paper &quot;Poly-MOT&quot;](https://github.com/lixiaoyu2000/Poly-MOT))
     
 
-## 6. Citation
+## 7. Citation
