@@ -16,9 +16,9 @@ This paper introduces MCTrack, a new 3D multi-object tracking method that achiev
 
 - 2024-10-08. The code has been released.🙌
 - 2024-09-24. MCTrack is released on [arXiv](https://arxiv.org/)😘.
-- 2024-09-01. We rank **2th** among all methods on **Waymo** Dataset for [MOT](http://www.cvlibs.net/datasets/kitti/eval_tracking.php)😊.
-- 2024-08-30. We rank **1th** among all methods on **KITTI** Dataset for [MOT](http://www.cvlibs.net/datasets/kitti/eval_tracking.php)😁.
-- 2024-08-27. We rank **1th** among all methods on **nuScenes** Dataset for [MOT](http://www.cvlibs.net/datasets/kitti/eval_tracking.php)😀.
+- 2024-09-01. We rank **2nd** among all methods on **Waymo** Dataset for [MOT](https://waymo.com/open/challenges/2020/3d-tracking/)😊.
+- 2024-08-30. We rank **1st** among all methods on **KITTI** Dataset for [MOT](http://www.cvlibs.net/datasets/kitti/eval_tracking.php)😁.
+- 2024-08-27. We rank **1st** among all methods on **nuScenes** Dataset for [MOT](https://www.nuscenes.org/tracking?externalData=all&mapData=all&modalities=Any)😀.
   
 
 ## 2. Results
