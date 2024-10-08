@@ -1,0 +1,26 @@
+# ------------------------------------------------------------------------
+# Copyright (c) 2024 megvii-research. All Rights Reserved.
+# ------------------------------------------------------------------------
+
+Date_Path:
+  gt_frame_info_path: "./data/nuscenes/eval_velocity/gt_results.pkl"
+  det_frame_info_path: "./data/nuscenes/eval_velocity/det_results.pkl"
+  kalman_cv_frame_info_path: "./data/nuscenes/eval_velocity/kalman_cv_results.pkl"
+  diff_frame_info_path: "./data/nuscenes/eval_velocity/diff_results.pkl"
+  curve_frame_info_path: "./data/nuscenes/eval_velocity/curve_results.pkl"
+
+match_cfg:
+  dt_interval: 0.5
+  video_name: 0
+  metric: 'bev_iou'
+  sensor: 'camera'
+
+velocity_cfg: 
+  angle_thresh: 90
+  velocity_type: 'velocity_global'
+  static_velocity_thresh: 1.0
+  static_movement_thresh: 1.5
+  eval_cls: ["car", "pedestrian", "bicycle", "motorcycle", "bus", "trailer", "truck"]
+
+threshold:
+  match_threshold: 0.2

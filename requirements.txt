@@ -1,0 +1,9 @@
+PyYAML
+lap
+easydict
+motmetrics==1.1.3
+numba==0.58.1
+numpy==1.22.0
+pandas==1.5.0
+pillow==10.4.0
+nuscenes-devkit==1.1.11

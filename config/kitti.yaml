@@ -1,0 +1,126 @@
+# ------------------------------------------------------------------------
+# Copyright (c) 2024 megvii-research. All Rights Reserved.
+# ------------------------------------------------------------------------
+
+DATASET: 'kitti'
+
+# dataset info
+SPLIT: 'test' # val, test
+DETECTOR: virconv  # point_rcnn second_iou, casa, virconv
+DATASET_ROOT: "data/kitti/datasets/"
+DETECTIONS_ROOT: "data/base_version/kitti/"
+SAVE_PATH: 'results/'
+TRACKING_MODE: 'ONLINE' # ONLINE / GLOBAL
+IS_RV_MATCHING: False  # True / False
+FRAME_RATE: 10
+# TRACKING_SEQS: [12]
+# TRACKING_SEQS:  [1,6,8,10,12,13,14,15,16,18,19]
+TRACKING_SEQS: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]
+# TRACKING_SEQS: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28]
+
+CATEGORY_LIST: ['car']
+CATEGORY_MAP_TO_NUMBER : {
+    "car": 0,
+}
+
+MATCHING:
+  BEV:
+    # Predict, BackPredict, Fusion
+    COST_STATE: {0: "Predict"} 
+    # iou_3d, giou_3d, dist_3d, ro_gdiou_3d
+    COST_MODE: {0: "RO_GDIOU_3D"} 
+    MATCHING_MODE: Greedy  # Hungarian, Greedy
+  RV:
+    # Predict, BackPredict, Fusion
+    COST_STATE: {0: "Predict"} 
+    # iou_2d, iou_2d, diou_2d, sdiou_2d
+    COST_MODE: {0: "SDIOU_2D"} 
+    MATCHING_MODE : Greedy  # Hungarian, Greedy
+
+
+# ----------------threshold------------
+THRESHOLD:
+  GLOBAL_TRACK_SCORE: 1.4
+  INPUT_SCORE: 
+    ONLINE: {0: 0.435}
+    OFFLINE: {0: 0.3775}
+  COST_STATE_PREDICT_RATION: {0: 0.5}
+  NMS_THRE: {0: 0.08} 
+  BEV:
+    COST_THRE: {0: 1.4} 
+    # Notes: You need to ensure that w1 + w2 = 2 , otherwise you will need to readjust the threshold of RO_GDIOU.
+    WEIGHT_RO_GDIOU: {0: {"w1": 1.0, "w2": 1.0}}
+  RV:
+    COST_THRE: {0: -0.3} 
+
+  TRAJECTORY_THRE:
+    CACHE_BBOX_LENGTH: {0: 1000} 
+    PREDICT_BBOX_LENGTH: {0: 16} 
+    MAX_UNMATCH_LENGTH: {0: 16} 
+    CONFIRMED_TRACK_LENGTH: {0: 1} 
+    DELET_OUT_VIEW_LENGTH: {0: 0}
+    CONFIRMED_DET_SCORE: {0: 0.7} 
+    IS_FILTER_PREDICT_BOX: {0: 0}
+    CONFIRMED_MATCHED_SCORE: {0: 0.3} 
+
+
+KALMAN_FILTER_POSE:
+  MOTION_MODE: {0: "CA"} # CV, CA, CTRA
+  CV:
+    N: 4   # State Dimension
+    M: 2   # Measure Dimension
+    NOISE:
+      0:
+        P: [1, 1, 500, 500]
+        Q: [0.5, 0.5, 5, 5]
+        R: [0.02, 0.02]
+        # R: [0.1, 0.1]
+  CA:
+    N: 6   # State Dimension
+    M: 2   # Measure Dimension
+    NOISE:
+      0:
+        P: [1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
+        Q: [2.0, 2.0, 1.0, 0.5, 1.0, 1.5]
+        R: [0.5, 0.5]
+  CTRA:
+    N: 6   # State Dimension
+    M: 2   # Measure Dimension
+    NOISE:
+      0:
+        P: [1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
+        Q: [2.0, 2.0, 1.0, 0.5, 1.0, 1.5]
+        R: [0.5, 0.5]
+
+KALMAN_FILTER_SIZE:
+  MOTION_MODE: {0: "CV"}
+  CV:
+    N: 4   # State Dimension
+    M: 2   # Measure Dimension
+    NOISE:
+      0:
+        P: [1.0, 1.0, 10.0, 10.0]
+        Q: [0.5, 0.5, 5, 5]
+        R: [0.02, 0.02]
+
+KALMAN_FILTER_YAW:
+  MOTION_MODE: {0: "CV"}
+  CV:
+    N: 2   # State Dimension
+    M: 2   # Measure Dimension
+    NOISE:
+      0:
+        P: [0.1, 0.1]
+        Q: [0.1, 0.1]
+        R: [0.2, 5.0]
+
+KALMAN_FILTER_RVBOX:
+  MOTION_MODE: {0: "CV"}
+  CV:
+    N: 8   # State Dimension
+    M: 4   # Measure Dimension
+    NOISE:
+      0:
+        P: [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
+        Q: [0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5]
+        R: [0.1, 0.1, 0.1, 0.1]

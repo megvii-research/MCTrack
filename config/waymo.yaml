@@ -1,0 +1,166 @@
+# ------------------------------------------------------------------------
+# Copyright (c) 2024 megvii-research. All Rights Reserved.
+# ------------------------------------------------------------------------
+
+DATASET: "waymo"
+
+# dataset info
+SPLIT: "val" # val, test
+DETECTOR: ctrl  
+DETECTIONS_ROOT: "data/base_version/waymo/"
+SAVE_PATH: "results/"
+TRACKING_MODE: 'ONLINE' # ONLINE / GLOBAL
+IS_RV_MATCHING: True  # True / False
+FRAME_RATE: 10
+
+CATEGORY_LIST: ["car", "pedestrian", "bicycle"]
+CATEGORY_MAP_TO_NUMBER : {
+    "car": 0,
+    "pedestrian": 1,
+    "bicycle": 2
+}
+
+
+MATCHING:
+  BEV:
+    # Predict, BackPredict, Fusion
+    COST_STATE: {0: "Predict", 1: "Predict", 2: "Predict"} 
+    # iou_3d, giou_3d, dist_3d, ro_gdiou_3d
+    COST_MODE: {0: "RO_GDIOU_3D", 1: "RO_GDIOU_3D", 2: "RO_GDIOU_3D"} 
+    MATCHING_MODE: Hungarian  # Hungarian, Greedy
+  RV:
+    # Predict, BackPredict, Fusion
+    COST_STATE: {0: "Predict", 1: "Predict", 2: "Predict"} 
+    # IOU_2D, GIOU_2D, DIOU_2D, SDIOU_2D
+    COST_MODE: {0: "SDIOU_2D", 1: "SDIOU_2D", 2: "SDIOU_2D"} 
+    MATCHING_MODE : Greedy  # Hungarian, Greedy
+
+
+
+# ----------------threshold------------
+THRESHOLD:
+  INPUT_SCORE: 
+    ONLINE: {0: 0.5, 1: 0.5, 2: 0.5}
+    OFFLINE: {0: 0.5, 1: 0.5, 2: 0.5}
+  COST_STATE_PREDICT_RATION: {0: 0.5, 1: 0.5, 2: 0.5}
+  BEV:
+    COST_THRE: {0: 1.5, 1: 1.9, 2: 2.2} 
+    WEIGHT_RO_GDIOU: {
+      0: {"w1": 1.0, "w2": 1.0}, 
+      1: {"w1": 1.0, "w2": 1.0}, 
+      2: {"w1": 1.0, "w2": 1.0},
+    }
+  RV:
+    COST_THRE: {0: 0.8, 1: 0.8, 2: 0.8} 
+
+  TRAJECTORY_THRE:
+    MAX_UNMATCH_LENGTH: {0: 3, 1: 2, 2: 2}
+    CACHE_BBOX_LENGTH: {0: 20, 1: 16, 2: 16}
+    PREDICT_BBOX_LENGTH: {0: 30, 1: 25, 2: 30} 
+    CONFIRMED_TRACK_LENGTH: {0: 0, 1: 0, 2: 0} 
+    DELET_OUT_VIEW_LENGTH: {0: 0, 1: 0, 2: 0}
+    CONFIRMED_DET_SCORE: {0: 0, 1: 0, 2: 0} 
+    IS_FILTER_PREDICT_BOX: {0: 0, 1: 0, 2: 0}
+    CONFIRMED_MATCHED_SCORE: {0: 0.3, 1: 0.3, 2: 0} 
+
+
+KALMAN_FILTER_POSE:
+  MOTION_MODE: {0: "CV", 1: "CV", 2: "CV"} # CV, CA, CTRA
+  CV:
+    N: 4   # State Dimension
+    M: 2   # Measure Dimension
+    NOISE:
+      0:
+        P: [1.0, 1.0, 10.0, 10.0]
+        Q: [0.5, 0.5, 5.0, 5.0]
+        R: [0.01, 0.01]
+      1:
+        P: [1.0, 1.0, 10.0, 10.0]
+        Q: [0.5, 0.5, 1.5, 1.5]
+        R: [2.0, 2.0]
+      2:
+        P: [1.0, 1.0, 10.0, 10.0]
+        Q: [0.5, 0.5, 1.5, 1.5]
+        R: [0.1, 0.1]
+  CA:
+    N: 6   # State Dimension
+    M: 2   # Measure Dimension
+    NOISE:
+      0:
+        P: [1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
+        Q: [2.0, 2.0, 1.0, 0.5, 1.0, 1.5]
+        R: [0.5, 0.5]
+      1:
+        P: [1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
+        Q: [2.0, 2.0, 1.0, 0.5, 1.0, 1.5]
+        R: [0.5, 0.5]
+      2:
+        P: [1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
+        Q: [2.0, 2.0, 1.0, 0.5, 1.0, 1.5]
+        R: [0.5, 0.5]
+  CTRA:
+    N: 6   # State Dimension
+    M: 2   # Measure Dimension
+    NOISE:
+      0:
+        P: [1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
+        Q: [2.0, 2.0, 1.0, 0.5, 1.0, 1.5]
+        R: [0.5, 0.5]
+      1:
+        P: [1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
+        Q: [2.0, 2.0, 1.0, 0.5, 1.0, 1.5]
+        R: [0.5, 0.5]
+      2:
+        P: [1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
+        Q: [2.0, 2.0, 1.0, 0.5, 1.0, 1.5]
+        R: [0.5, 0.5]
+
+
+KALMAN_FILTER_SIZE:
+  MOTION_MODE: {0: "CV", 1: "CV", 2: "CV"}
+  CV:
+    N: 4   # State Dimension
+    M: 2   # Measure Dimension
+    NOISE:
+      0:
+        P: [1.0, 1.0, 10.0, 10.0]
+        Q: [0.5, 0.5, 1.5, 1.5]
+        R: [2.0, 2.0]
+      1:
+        P: [1.0, 1.0, 10.0, 10.0]
+        Q: [0.5, 0.5, 1.5, 1.5]
+        R: [2.0, 2.0]
+      2:
+        P: [1.0, 1.0, 10.0, 10.0]
+        Q: [0.5, 0.5, 1.5, 1.5]
+        R: [2.0, 2.0]
+
+KALMAN_FILTER_YAW:
+  MOTION_MODE: {0: "CV", 1: "CV", 2: "CV"}
+  CV:
+    N: 2   # State Dimension
+    M: 2   # Measure Dimension
+    NOISE:
+      0:
+        P: [0.1, 0.1]
+        Q: [0.1, 0.1]
+        R: [0.2, 5.0]
+      1:
+        P: [0.1, 0.1]
+        Q: [0.1, 0.1]
+        R: [0.2, 5.0]
+      2:
+        P: [0.1, 0.1]
+        Q: [0.1, 0.1]
+        R: [0.2, 5.0]
+
+KALMAN_FILTER_RVBOX:
+  MOTION_MODE: {0: "CV"}
+  CV:
+    N: 8   # State Dimension
+    M: 4   # Measure Dimension
+    NOISE:
+      0:
+        P: [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
+        Q: [0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5]
+        R: [2.0, 2.0, 2.0, 2.0]

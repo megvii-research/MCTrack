@@ -1,0 +1,254 @@
+# ------------------------------------------------------------------------
+# Copyright (c) 2024 megvii-research. All Rights Reserved.
+# ------------------------------------------------------------------------
+
+DATASET: "nuscenes"
+
+# dataset info
+SPLIT: "val" # val, test
+DETECTOR: centerpoint  # centerpoint, largekernel
+DATASET_ROOT: "s3://wangxiyang/open_datasets/nuscenes/raw_data/" 
+# DATASET_ROOT: "data/nuscenes/datasets/"  # 开源用这个
+DETECTIONS_ROOT: "data/base_version/nuscenes/"
+SAVE_PATH: "results/"
+TRACKING_MODE: 'ONLINE' # ONLINE / GLOBAL
+IS_RV_MATCHING: False  # True / False
+FRAME_RATE: 2
+CATEGORY_LIST: ["car", "pedestrian", "bicycle", "motorcycle", "bus", "trailer", "truck"]
+CATEGORY_MAP_TO_NUMBER : {
+    "car": 0,
+    "pedestrian": 1,
+    "bicycle": 2,
+    "motorcycle": 3,
+    "bus": 4,
+    "trailer": 5,
+    "truck": 6,
+}
+
+MATCHING:
+  BEV:
+    # Predict, BackPredict, Fusion
+    COST_STATE: {0: "BackPredict", 1: "BackPredict", 2: "Predict", 3: "Fusion", 4: "Predict", 5: "BackPredict", 6: "BackPredict"} 
+    # iou_3d, giou_3d, dist_3d, ro_gdiou_3d
+    COST_MODE: {0: "RO_GDIOU_3D", 1: "RO_GDIOU_3D", 2: "RO_GDIOU_3D", 3: "RO_GDIOU_3D", 4: "RO_GDIOU_3D", 5: "RO_GDIOU_3D", 6: "RO_GDIOU_3D"} 
+     # Hungarian, Greedy
+    MATCHING_MODE: Hungarian 
+  RV:
+    # Predict, BackPredict, Fusion
+    COST_STATE: {0: "Predict", 1: "Predict", 2: "Predict", 3: "Predict", 4: "Predict", 5: "Predict", 6: "Predict"} 
+    # IOU_2D, GIOU_2D, DIOU_2D, SDIOU_2D
+    COST_MODE: {0: "SDIOU_2D", 1: "SDIOU_2D", 2: "SDIOU_2D", 3: "SDIOU_2D", 4: "SDIOU_2D", 5: "SDIOU_2D", 6: "SDIOU_2D"} 
+     # Hungarian, Greedy
+    MATCHING_MODE : Greedy  # Hungarian, Greedy
+
+
+# ----------------threshold------------
+THRESHOLD:
+  INPUT_SCORE: 
+    ONLINE: {0: 0.15, 1: 0.16, 2: 0.20, 3: 0.15, 4: 0.16, 5: 0.17, 6: 0.0}
+    OFFLINE: {0: 0.15, 1: 0.16, 2: 0.20, 3: 0.15, 4: 0.16, 5: 0.17, 6: 0.0}
+  COST_STATE_PREDICT_RATION: {0: 1.0, 1: 1.0, 2: 1.0, 3: 0.5, 4: 1.0, 5: 1.0, 6: 1.0}
+  NMS_THRE: {0: 0.04, 1: 0.08, 2: 0.08, 3: 0.06, 4: 0.08, 5: 0.12, 6: 0.05}  
+  BEV:
+    COST_THRE: {0: 1.10, 1: 2.06, 2: 2.00, 3: 2.06, 4: 1.60, 5: 1.26, 6: 1.16}
+    WEIGHT_RO_GDIOU: {
+      0: {"w1": 0.5, "w2": 1.5}, 
+      1: {"w1": 1.0, "w2": 1.0}, 
+      2: {"w1": 1.0, "w2": 1.0},
+      3: {"w1": 1.0, "w2": 1.0},
+      4: {"w1": 1.0, "w2": 1.0},
+      5: {"w1": 1.0, "w2": 1.0}, 
+      6: {"w1": 1.0, "w2": 1.0}, 
+    }
+  RV:
+    COST_THRE: {0: -0.3, 1: -0.3, 2: -0.3, 3: -0.3, 4: -0.3, 5: -0.3, 6: -0.3} 
+
+  TRAJECTORY_THRE:
+    CACHE_BBOX_LENGTH: {0: 30, 1: 30, 2: 30, 3: 30, 4: 30, 5: 30, 6: 30} 
+    PREDICT_BBOX_LENGTH: {0: 17, 1: 7, 2: 13, 3: 22, 4: 14, 5: 7, 6: 22} 
+    MAX_UNMATCH_LENGTH: {0: 0, 1: 1, 2: 1, 3: 1, 4: 1, 5: 1, 6: 1} 
+    CONFIRMED_TRACK_LENGTH: {0: 1, 1: 1, 2: 1, 3: 1, 4: 1, 5: 1, 6: 1} 
+    DELET_OUT_VIEW_LENGTH: {0: 0, 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0}   
+    CONFIRMED_DET_SCORE: {0: 0.7, 1: 0.7, 2: 0.7, 3: 0.7, 4: 0.7, 5: 0.7, 6: 0.7} 
+    IS_FILTER_PREDICT_BOX: {0: -1, 1: -1, 2: -1, 3: -1, 4: -1, 5: -1, 6: -1}
+    CONFIRMED_MATCHED_SCORE:  {0: 0.3, 1: 0.3, 2: 0.3, 3: 0.3, 4: 0.3, 5: 0.3, 6: 0.3} 
+
+KALMAN_FILTER_POSE:
+  MOTION_MODE: {0: "CV", 1: "CV", 2: "CV", 3: "CV", 4: "CV", 5: "CV", 6: "CV"} # CV, CA, CTRA
+  CV:
+    N: 4   # State Dimension
+    M: 4   # Measure Dimension
+    NOISE:
+      0:
+        P: [1.0, 1.0, 10.0, 10.0]
+        Q: [0.5, 0.5, 1.5, 1.5]
+        R: [0.7, 0.7, 0.5, 0.5]
+      1:
+        P: [1.0, 1.0, 10.0, 10.0]
+        Q: [1.5, 1.5, 1.5, 1.5]
+        R: [2.0, 2.0, 3.5, 3.5]
+      2:
+        P: [1.0, 1.0, 1.0, 1.0]
+        Q: [0.3, 0.3, 1.0, 1.0]
+        R: [0.1, 0.1, 1.0, 1.0]
+      3:
+        P: [1.0, 1.0, 10.0, 10.0]
+        Q: [0.5, 0.5, 4.0, 4.0]
+        R: [0.1, 0.1, 0.1, 0.1]
+      4:
+        P: [100.0, 100.0, 100.0, 100.0]
+        Q: [0.5, 0.5, 1.5, 1.5]
+        R: [1.5, 1.5, 500, 500]
+      5:
+        P: [1.0, 1.0, 10.0, 10.0]
+        Q: [0.3, 0.3, 0.1, 0.1]
+        R: [2.0, 2.0, 2.5, 2.5]
+      6:
+        P: [1.0, 1.0, 10.0, 10.0]
+        Q: [0.1, 0.1, 2.0, 2.0]
+        R: [1.5, 1.5, 4.0, 4.0]
+  CA:
+    N: 6   # State Dimension
+    M: 2   # Measure Dimension
+    NOISE:
+      0:
+        P: [1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
+        Q: [2.0, 2.0, 1.0, 0.5, 1.0, 1.5]
+        R: [0.5, 0.5]
+      1:
+        P: [1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
+        Q: [2.0, 2.0, 1.0, 0.5, 1.0, 1.5]
+        R: [0.5, 0.5]
+      2:
+        P: [1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
+        Q: [2.0, 2.0, 1.0, 0.5, 1.0, 1.5]
+        R: [0.5, 0.5]
+      3:
+        P: [1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
+        Q: [2.0, 2.0, 1.0, 0.5, 1.0, 1.5]
+        R: [0.5, 0.5]
+      4:
+        P: [1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
+        Q: [2.0, 2.0, 1.0, 0.5, 1.0, 1.5]
+        R: [0.5, 0.5]
+      5:
+        P: [1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
+        Q: [2.0, 2.0, 1.0, 0.5, 1.0, 1.5]
+        R: [0.5, 0.5]
+      6:
+        P: [1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
+        Q: [2.0, 2.0, 1.0, 0.5, 1.0, 1.5]
+        R: [0.5, 0.5]
+  CTRA:
+    N: 6   # State Dimension
+    M: 2   # Measure Dimension
+    NOISE:
+      0:
+        P: [1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
+        Q: [2.0, 2.0, 1.0, 0.5, 1.0, 1.5]
+        R: [0.5, 0.5]
+      1:
+        P: [1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
+        Q: [2.0, 2.0, 1.0, 0.5, 1.0, 1.5]
+        R: [0.5, 0.5]
+      2:
+        P: [1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
+        Q: [2.0, 2.0, 1.0, 0.5, 1.0, 1.5]
+        R: [0.5, 0.5]
+      3:
+        P: [1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
+        Q: [2.0, 2.0, 1.0, 0.5, 1.0, 1.5]
+        R: [0.5, 0.5]
+      4:
+        P: [1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
+        Q: [2.0, 2.0, 1.0, 0.5, 1.0, 1.5]
+        R: [0.5, 0.5]
+      5:
+        P: [1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
+        Q: [2.0, 2.0, 1.0, 0.5, 1.0, 1.5]
+        R: [0.5, 0.5]
+      6:
+        P: [1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
+        Q: [2.0, 2.0, 1.0, 0.5, 1.0, 1.5]
+        R: [0.5, 0.5]
+
+KALMAN_FILTER_SIZE:
+  MOTION_MODE: {0: "CV", 1: "CV", 2: "CV", 3: "CV", 4: "CV", 5: "CV", 6: "CV"}
+  CV:
+    N: 4   # State Dimension
+    M: 2   # Measure Dimension
+    NOISE:
+      0:
+        P: [1.0, 1.0, 10.0, 10.0]
+        Q: [0.5, 0.5, 1.5, 1.5]
+        R: [2.0, 2.0]
+      1:
+        P: [1.0, 1.0, 10.0, 10.0]
+        Q: [0.5, 0.5, 1.5, 1.5]
+        R: [2.0, 2.0]
+      2:
+        P: [1.0, 1.0, 10.0, 10.0]
+        Q: [0.5, 0.5, 1.5, 1.5]
+        R: [2.0, 2.0]
+      3:
+        P: [1.0, 1.0, 10.0, 10.0]
+        Q: [0.5, 0.5, 1.5, 1.5]
+        R: [2.0, 2.0]
+      4:
+        P: [1.0, 1.0, 10.0, 10.0]
+        Q: [0.5, 0.5, 1.5, 1.5]
+        R: [2.0, 2.0]
+      5:
+        P: [1.0, 1.0, 10.0, 10.0]
+        Q: [0.5, 0.5, 1.5, 1.5]
+        R: [2.0, 2.0]
+      6:
+        P: [1.0, 1.0, 10.0, 10.0]
+        Q: [0.5, 0.5, 1.5, 1.5]
+        R: [2.0, 2.0]
+
+KALMAN_FILTER_YAW:
+  MOTION_MODE: {0: "CV", 1: "CV", 2: "CV", 3: "CV", 4: "CV", 5: "CV", 6: "CV"}
+  CV:
+    N: 2   # State Dimension
+    M: 2   # Measure Dimension
+    NOISE:
+      0:
+        P: [0.1, 0.1]
+        Q: [0.1, 0.1]
+        R: [0.2, 5.0]
+      1:
+        P: [0.1, 0.1]
+        Q: [0.1, 0.1]
+        R: [0.2, 5.0]
+      2:
+        P: [0.1, 0.1]
+        Q: [0.1, 0.1]
+        R: [0.2, 5.0]
+      3:
+        P: [0.1, 0.1]
+        Q: [0.1, 0.1]
+        R: [0.2, 5.0]
+      4:
+        P: [0.1, 0.1]
+        Q: [0.1, 0.1]
+        R: [0.2, 5.0]
+      5:
+        P: [0.1, 0.1]
+        Q: [0.1, 0.1]
+        R: [0.2, 5.0]
+      6:
+        P: [0.1, 0.1]
+        Q: [0.1, 0.1]
+        R: [0.2, 5.0]
+
+KALMAN_FILTER_RVBOX:
+  MOTION_MODE: {0: "CV"}
+  CV:
+    N: 8   # State Dimension
+    M: 4   # Measure Dimension
+    NOISE:
+      0:
+        P: [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
+        Q: [0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5]
+        R: [2.0, 2.0, 2.0, 2.0]

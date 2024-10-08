@@ -29,8 +29,8 @@ This paper introduces MCTrack, a new 3D multi-object tracking method that achiev
 
 | **Method** | **Detector** | **Set** | **HOTA** | **MOTA** | **TP** | **FP** | **IDSW** |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| **MCTrack** | VirConv | test | 80.78 | 89.82 | 32204 | 2188 | 65  |
-| **MCTrack** | VirConv | train | 82.60 | 85.61 | 22107 | 1438 | 32  |
+| **MCTrack** | VirConv | test | 80.78 | 89.82 | 32207 | 2185 | 64  |
+| **MCTrack** | VirConv | train | 82.56 | 91.62 | 32064 | 2328 | 12  |
 
 #### offline
 
