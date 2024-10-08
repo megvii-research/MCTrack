@@ -96,9 +96,9 @@ This paper introduces MCTrack, a new 3D multi-object tracking method that achiev
                  └── test.json
     ```
   - For Waymo
-    - To prepare the Waymo data, you first need to follow [ImmortalTracker](https://github.com/esdolo/ImmortalTracker)'s instructions to extract `ego_info` and `ts_info` (we will also provide the link, so you might be able to skip this step.).
+    - To prepare the Waymo data, you first need to follow [ImmortalTracker](https://github.com/esdolo/ImmortalTracker)'s instructions to extract `ego_info` and `ts_info` (we will also provide these in the link, so you might be able to skip this step.).
 
-    - Follow [ImmortalTracker](https://github.com/esdolo/ImmortalTracker)'s instructions to convert detection results into to .npz files.
+    - Follow [ImmortalTracker](https://github.com/esdolo/ImmortalTracker)'s instructions to convert detection results into to `.npz` files.
 
     - Please note that we have modified the `ego_info` section in immortaltracker, and the updated file is provided in `preprocess/ego_info.py`.
     ```
