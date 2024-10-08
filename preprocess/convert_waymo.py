@@ -404,7 +404,7 @@ def waymo_main(raw_data_path, dets_path, det_name, save_path, split):
                 },
             }
             scene_datas.append(scene_data)
-    all_datas[segment_name] = scene_datas
+        all_datas[segment_name] = scene_datas
     save_path = os.path.join(save_path, det_name)
     os.makedirs(save_path, exist_ok=True)
     save_path_temp = os.path.join(save_path, split + ".json")
