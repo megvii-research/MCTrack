@@ -296,7 +296,7 @@ $ pip install -r requirements.txt
 
 - Next, run:
   ```
-  $ python eval_motion.py
+  $ python evaluation/eval_motion.py
   ```
 - You will then obtain the results of the motion metric evaluation. The ```config/nuscenes_motion_eval.yaml``` file contains the parameters for motion metric evaluation.
 
