@@ -30,14 +30,14 @@ This paper introduces MCTrack, a new 3D multi-object tracking method that achiev
 | **Method** | **Detector** | **Set** | **HOTA** | **MOTA** | **TP** | **FP** | **IDSW** |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | **MCTrack** | VirConv | test | 80.78 | 89.82 | 32207 | 2185 | 64  |
-| **MCTrack** | VirConv | train | 82.56 | 91.62 | 32064 | 2328 | 12  |
+| **MCTrack** | VirConv | train | 82.60 | 85.61 | 22107 | 1468 | 32  |
 
 #### offline
 
 | **Method** | **Detector** | **Set** | **HOTA** | **MOTA** | **TP** | **FP** | **IDSW** |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| **MCTrack** | VirConv | test | 82.46 | 91.46 | 32031 | 2361 | 12  |
-| **MCTrack** | VirConv | train | 83.88 | 85.61 | 22112 | 1261 | 3  |
+| **MCTrack** | VirConv | test | 82.56 | 91.64 | 32064 | 2328 | 12  |
+| **MCTrack** | VirConv | train | 83.88 | 86.61 | 22112 | 1261 | 3  |
 
 ### [nuScenes](https://www.nuscenes.org/tracking?externalData=all&mapData=all&modalities=Any)
 
@@ -320,3 +320,12 @@ $ pip install -r requirements.txt
     
 
 ## 7. Citation
+If you find this work useful, please consider to cite our paper:
+```
+@article{wang2024mctrack,
+  title={MCTrack: A Unified 3D Multi-Object Tracking Framework for Autonomous Driving},
+  author={Wang, Xiyang and Qi, Shouzheng and Zhao, Jieyou and Zhou, Hangning and Zhang, Siyu and Wang, Guoan and Tu, Kai and Guo, Songlin and Zhao, Jianbo and Li, Jian and others},
+  journal={arXiv preprint arXiv:2409.16149},
+  year={2024}
+}
+```
