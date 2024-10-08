@@ -10,7 +10,7 @@ This is the official repo release of the paper [MCTrack: Unified 3D Multi-Object
 ## 0. Abstract
 
 This paper introduces MCTrack, a new 3D multi-object tracking method that achieves state-of-the-art (SOTA) performance across KITTI, nuScenes, and Waymo datasets. Addressing the gap in existing tracking paradigms, which often perform well on specific datasets but lack generalizability, MCTrack offers a unified solution. Additionally, we have standardized the format of perceptual results across various datasets, termed BaseVersion, facilitating researchers in the field of multi-object tracking (MOT) to concentrate on the core algorithmic development without the undue burden of data preprocessing. Finally, recognizing the limitations of current evaluation metrics, we propose a novel set that assesses motion information output, such as velocity and acceleration, crucial for downstream tasks.
-<p align="center"><img src="docs/Fig1.jpg" width="500"/></p>
+<p align="center"><img src="docs/Fig1.png" width="500"/></p>
 
 ## 1. News
 

@@ -5,7 +5,7 @@
 DATASET: 'kitti'
 
 # dataset info
-SPLIT: 'test' # val, test
+SPLIT: 'val' # val, test
 DETECTOR: virconv  # point_rcnn second_iou, casa, virconv
 DATASET_ROOT: "data/kitti/datasets/"
 DETECTIONS_ROOT: "data/base_version/kitti/"
