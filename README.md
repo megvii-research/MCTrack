@@ -284,7 +284,7 @@ $ pip install -r requirements.txt
 
 ### Motion metric evaluation
 
-- TODO: Currently, we are only conducting motion metric evaluations on the nuScenes dataset.
+- TODO:Currently, we are only conducting motion metric evaluations on the nuScenes dataset.
 
 - If you are interested in our motion metric evaluation, you first need to convert the tracking result files (```result_for_motion.json```) into a format suitable for motion metric evaluation by running:
 
