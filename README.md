@@ -52,6 +52,7 @@ This paper introduces MCTrack, a new 3D multi-object tracking method that achiev
 | Method | Detector | Set | MOTA / L1 | MOTP / L1 | MOTA / L2 | MOTP / L2 |
 | --- | --- | --- | --- | --- | --- | --- |
 | **MCTrack** | CTRL | test | 0.7504 | 0.2276 | 0.7344 | 0.2278 |
+| **MCTrack** | CTRL | val | 0.7384 | 0.2288 | 0.7155 | 0.2293 |
 
 ## 3. Data preparation
 ### BaseVersion Data Generation
