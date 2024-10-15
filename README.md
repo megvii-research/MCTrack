@@ -1,11 +1,32 @@
-# MCTrack
-[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/mctrack-a-unified-3d-multi-object-tracking/multiple-object-tracking-on-kitti-tracking)](https://paperswithcode.com/sota/multiple-object-tracking-on-kitti-tracking?p=mctrack-a-unified-3d-multi-object-tracking)
+<div  align=center><img src="./docs/MC_logo.png" width="25%"></div>
 
-[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/mctrack-a-unified-3d-multi-object-tracking/3d-multi-object-tracking-on-nuscenes)](https://paperswithcode.com/sota/3d-multi-object-tracking-on-nuscenes?p=mctrack-a-unified-3d-multi-object-tracking)
+## <p align=center>MCTrack: A Unified 3D Multi-Object Tracking Framework for Autonomous</p>
 
-[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/mctrack-a-unified-3d-multi-object-tracking/3d-multi-object-tracking-on-waymo-open)](https://paperswithcode.com/sota/3d-multi-object-tracking-on-waymo-open?p=mctrack-a-unified-3d-multi-object-tracking)
+<div style="text-align: center;">
+  <a href="https://paperswithcode.com/sota/3d-multi-object-tracking-on-nuscenes?p=mctrack-a-unified-3d-multi-object-tracking">
+    <img src="https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/mctrack-a-unified-3d-multi-object-tracking/3d-multi-object-tracking-on-nuscenes" alt="PWC">
+  </a>
+</div>
 
-This is the official repo release of the paper [MCTrack: Unified 3D Multi-Object Tracking Framework for Autonomous](https://arxiv.org/abs/2409.16149)
+<div style="text-align: center;">
+  <a href="https://paperswithcode.com/sota/multiple-object-tracking-on-kitti-tracking?p=mctrack-a-unified-3d-multi-object-tracking">
+    <img src="https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/mctrack-a-unified-3d-multi-object-tracking/multiple-object-tracking-on-kitti-tracking" alt="PWC">
+  </a>
+</div>
+
+
+<div style="text-align: center;">
+  <a href="https://paperswithcode.com/sota/3d-multi-object-tracking-on-waymo-open?p=mctrack-a-unified-3d-multi-object-tracking">
+    <img src="https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/mctrack-a-unified-3d-multi-object-tracking/3d-multi-object-tracking-on-waymo-open" alt="PWC">
+  </a>
+</div>
+
+  <br>
+  <div align="center">
+  <a href='https://arxiv.org/abs/2409.16149'><img src='https://img.shields.io/badge/Paper-Arxiv-red'></a>
+  </div>
+  <br>
+
 
 ## 0. Abstract
 
@@ -14,11 +35,11 @@ This paper introduces MCTrack, a new 3D multi-object tracking method that achiev
 
 ## 1. News
 
-- 2024-10-08. The code has been released.🙌
-- 2024-09-24. MCTrack is released on [arXiv](https://arxiv.org/)😘.
-- 2024-09-01. We rank **2nd** among all methods on **Waymo** Dataset for [MOT](https://waymo.com/open/challenges/2020/3d-tracking/)😊.
-- 2024-08-30. We rank **1st** among all methods on **KITTI** Dataset for [MOT](http://www.cvlibs.net/datasets/kitti/eval_tracking.php)😁.
-- 2024-08-27. We rank **1st** among all methods on **nuScenes** Dataset for [MOT](https://www.nuscenes.org/tracking?externalData=all&mapData=all&modalities=Any)😀.
+- **[🔥🔥🔥2024-10-08]**. The code has been released.🙌
+- 2024-09-24. MCTrack is released on [arXiv](https://arxiv.org/).
+- 2024-09-01. We rank **2nd** among all methods on **Waymo** Dataset for [MOT](https://waymo.com/open/challenges/2020/3d-tracking/).
+- 2024-08-30. We rank **1st** among all methods on **KITTI** Dataset for [MOT](http://www.cvlibs.net/datasets/kitti/eval_tracking.php).
+- 2024-08-27. We rank **1st** among all methods on **nuScenes** Dataset for [MOT](https://www.nuscenes.org/tracking?externalData=all&mapData=all&modalities=Any).
   
 
 ## 2. Results
