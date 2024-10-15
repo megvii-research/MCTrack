@@ -1,21 +1,22 @@
-<div  align=center><img src="./docs/MC_logo.png" width="25%"></div>
+<div  align=center><img src="./docs/MC_logo.png" width="55%"></div>
 
-## <p align=center>MCTrack: A Unified 3D Multi-Object Tracking Framework for Autonomous</p>
+## <p align=center>MCTrack: A Unified 3D Multi-Object Tracking Framework for Autonomous</p> 
 
-<div style="text-align: center;">
+<p align="center">
   <a href="https://paperswithcode.com/sota/3d-multi-object-tracking-on-nuscenes?p=mctrack-a-unified-3d-multi-object-tracking">
     <img src="https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/mctrack-a-unified-3d-multi-object-tracking/3d-multi-object-tracking-on-nuscenes" alt="PWC">
   </a>
+  
 </div>
 
-<div style="text-align: center;">
+<p align="center">
   <a href="https://paperswithcode.com/sota/multiple-object-tracking-on-kitti-tracking?p=mctrack-a-unified-3d-multi-object-tracking">
     <img src="https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/mctrack-a-unified-3d-multi-object-tracking/multiple-object-tracking-on-kitti-tracking" alt="PWC">
   </a>
 </div>
 
 
-<div style="text-align: center;">
+<p align="center">
   <a href="https://paperswithcode.com/sota/3d-multi-object-tracking-on-waymo-open?p=mctrack-a-unified-3d-multi-object-tracking">
     <img src="https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/mctrack-a-unified-3d-multi-object-tracking/3d-multi-object-tracking-on-waymo-open" alt="PWC">
   </a>
