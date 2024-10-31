@@ -327,19 +327,19 @@ $ pip install -r requirements.txt
 
 - In the detection part, many thanks to the following open-source projects:
   
-  - [CTRL]([GitHub - tusen-ai/SST: Code for a series of work in LiDAR perception, including SST (CVPR 22), FSD (NeurIPS 22), FSD++ (TPAMI 23), FSDv2, and CTRL (ICCV 23, oral).](https://github.com/tusen-ai/SST?tab=readme-ov-file))
+  - [CTRL](https://github.com/tusen-ai/SST?tab=readme-ov-file)
     
-  - [VirConv]([GitHub - hailanyi/VirConv: Virtual Sparse Convolution for Multimodal 3D Object Detection](https://github.com/hailanyi/VirConv))
+  - [VirConv](https://github.com/hailanyi/VirConv)
     
-  - [CenterPoint]([GitHub - tianweiy/CenterPoint](https://github.com/tianweiy/CenterPoint))
+  - [CenterPoint](https://github.com/tianweiy/CenterPoint)
     
 - In the tracking part, many thanks to the following open-source projects:
   
-  - [PC3T]([GitHub - hailanyi/3D-Multi-Object-Tracker: A project for 3D multi-object tracking](https://github.com/hailanyi/3D-Multi-Object-Tracker))
+  - [PC3T](https://github.com/hailanyi/3D-Multi-Object-Tracker)
     
-  - [Poly-MOT]([GitHub - lixiaoyu2000/Poly-MOT: Official Repo For IROS 2023 Accepted Paper &quot;Poly-MOT&quot;](https://github.com/lixiaoyu2000/Poly-MOT))
+  - [Poly-MOT](https://github.com/lixiaoyu2000/Poly-MOT)
 
-  - [ImmortalTracker]([GitHub - esdolo/ImmortalTracker: Official implementation of Immortal Tracker: Tracklet Never Dies](https://github.com/esdolo/ImmortalTracker))
+  - [ImmortalTracker](https://github.com/esdolo/ImmortalTracker)
     
 
 ## 7. Citation
