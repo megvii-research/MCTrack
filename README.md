@@ -10,8 +10,8 @@
 </div>
 
 <p align="center">
-  <a href="https://paperswithcode.com/sota/multiple-object-tracking-on-kitti-tracking?p=mctrack-a-unified-3d-multi-object-tracking">
-    <img src="https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/mctrack-a-unified-3d-multi-object-tracking/multiple-object-tracking-on-kitti-tracking" alt="PWC">
+  <a href="https://paperswithcode.com/sota/3d-multi-object-tracking-on-kitti-1?p=mctrack-a-unified-3d-multi-object-tracking">
+    <img src="https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/mctrack-a-unified-3d-multi-object-tracking/3d-multi-object-tracking-on-kitti-1" alt="PWC">
   </a>
 </div>
 
