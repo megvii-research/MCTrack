@@ -51,15 +51,15 @@ This paper introduces MCTrack, a new 3D multi-object tracking method that achiev
 
 | **Method** | **Detector** | **Set** | **HOTA** | **MOTA** | **TP** | **FP** | **IDSW** |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| **MCTrack** | VirConv | test | 80.78 | 89.82 | 32207 | 2185 | 64  |
-| **MCTrack** | VirConv | train | 82.60 | 85.61 | 22107 | 1468 | 32  |
+| **MCTrack** | VirConv | test | 81.07 | 89.81 | 32367 | 2025 | 46  |
+| **MCTrack** | VirConv | train | 82.65 | 85.19 | 22186 | 1659 | 22  |
 
 #### offline
 
 | **Method** | **Detector** | **Set** | **HOTA** | **MOTA** | **TP** | **FP** | **IDSW** |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| **MCTrack** | VirConv | test | 82.56 | 91.64 | 32064 | 2328 | 12  |
-| **MCTrack** | VirConv | train | 83.88 | 86.61 | 22112 | 1261 | 3  |
+| **MCTrack** | VirConv | test | 82.75 | 91.79 | 32095 | 2297 | 11  |
+| **MCTrack** | VirConv | train | 83.89 | 86.56 | 22150 | 1311 | 3  |
 
 ### [nuScenes](https://www.nuscenes.org/tracking?externalData=all&mapData=all&modalities=Any)
 

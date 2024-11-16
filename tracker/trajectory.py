@@ -286,12 +286,6 @@ class Trajectory:
 
         if self.status_flag == 2 and self.unmatch_length > self._max_predict_len:
             self.status_flag = 4
-            
-        if self.cfg["DATASET"] == "kitti":
-            if self.status_flag == 0 and self.unmatch_length > 3:
-                self.status_flag = 4 
-            if self.unmatch_length >= 2 and self.track_length == 4:
-                self.status_flag = 4
 
         return
 
@@ -314,6 +308,7 @@ class Trajectory:
         start_xyz_lwh_yaw = None 
         start_frame = 0
 
+        last_xyz_lwh_yaw_fusion = None
         for bbox in self.bboxes:
             frame_id = bbox.frame_id
             bbox.det_score = self.logit(bbox.det_score)
@@ -323,7 +318,7 @@ class Trajectory:
             if self.first_updated_frame <= frame_id <= self.last_updated_frame and bbox.is_fake and self.is_output: 
                 bbox.is_interpolation = True
                 if if_has_unmatched == 0:
-                    start_xyz_lwh_yaw = bbox.global_xyz_lwh_yaw_fusion
+                    start_xyz_lwh_yaw = last_xyz_lwh_yaw_fusion
                     if_has_unmatched = 1
                     unmatch_bbox_sum = 1
                     start_frame = frame_id
@@ -334,19 +329,18 @@ class Trajectory:
                 end_xyz_lwh_yaw = bbox.global_xyz_lwh_yaw_fusion
                 gap = (end_xyz_lwh_yaw - start_xyz_lwh_yaw) / (unmatch_bbox_sum + 1)
                 last_xyz_lwh_yaw = start_xyz_lwh_yaw
-                if unmatch_bbox_sum >= 4:
+                if unmatch_bbox_sum >= 2:
                     cnt = 0
                     for bbox_tmp in self.bboxes:
                         if bbox_tmp.frame_id >= start_frame and bbox_tmp.frame_id <= end_frame:
                             cnt += 1
                             last_xyz_lwh_yaw += gap
-                            tmp_global_xyz_lwh_yaw_fusion = bbox_tmp.global_xyz_lwh_yaw_fusion
-                            if cnt <= 3:
-                                bbox_tmp.global_xyz_lwh_yaw_fusion[0] = 0.5 * last_xyz_lwh_yaw[0] + 0.5 * tmp_global_xyz_lwh_yaw_fusion[0]
-                                bbox_tmp.global_xyz_lwh_yaw_fusion[1] = 0.5 * last_xyz_lwh_yaw[1] + 0.5 * tmp_global_xyz_lwh_yaw_fusion[1]
-                            else:
-                                bbox_tmp.global_xyz_lwh_yaw_fusion = last_xyz_lwh_yaw
+                            bbox_tmp.global_xyz_lwh_yaw_fusion[0] = last_xyz_lwh_yaw[0]
+                            bbox_tmp.global_xyz_lwh_yaw_fusion[1] = last_xyz_lwh_yaw[1]
+                            bbox_tmp.global_xyz_lwh_yaw_fusion[2] = last_xyz_lwh_yaw[2]
+
                 if_has_unmatched = 0
+            last_xyz_lwh_yaw_fusion = bbox.global_xyz_lwh_yaw_fusion
                 
         score = score_sum / detected_num
         for bbox in self.bboxes:

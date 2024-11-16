@@ -11,7 +11,7 @@ DATASET_ROOT: "data/kitti/datasets/"
 DETECTIONS_ROOT: "data/base_version/kitti/"
 SAVE_PATH: 'results/'
 TRACKING_MODE: 'ONLINE' # ONLINE / GLOBAL
-IS_RV_MATCHING: False  # True / False
+IS_RV_MATCHING: True  # True / False
 FRAME_RATE: 10
 # TRACKING_SEQS: [12]
 # TRACKING_SEQS:  [1,6,8,10,12,13,14,15,16,18,19]
@@ -29,7 +29,7 @@ MATCHING:
     COST_STATE: {0: "Predict"} 
     # iou_3d, giou_3d, dist_3d, ro_gdiou_3d
     COST_MODE: {0: "RO_GDIOU_3D"} 
-    MATCHING_MODE: Greedy  # Hungarian, Greedy
+    MATCHING_MODE: Hungarian  # Hungarian, Greedy
   RV:
     # Predict, BackPredict, Fusion
     COST_STATE: {0: "Predict"} 
@@ -41,8 +41,9 @@ MATCHING:
 # ----------------threshold------------
 THRESHOLD:
   GLOBAL_TRACK_SCORE: 1.4
+  NMS_THRE: {0: 0.08} 
   INPUT_SCORE: 
-    ONLINE: {0: 0.435}
+    ONLINE: {0: 0.375}
     OFFLINE: {0: 0.3775}
   COST_STATE_PREDICT_RATION: {0: 0.5}
   NMS_THRE: {0: 0.08} 
@@ -55,8 +56,8 @@ THRESHOLD:
 
   TRAJECTORY_THRE:
     CACHE_BBOX_LENGTH: {0: 1000} 
-    PREDICT_BBOX_LENGTH: {0: 16} 
-    MAX_UNMATCH_LENGTH: {0: 16} 
+    PREDICT_BBOX_LENGTH: {0: 30} 
+    MAX_UNMATCH_LENGTH: {0: 0} 
     CONFIRMED_TRACK_LENGTH: {0: 1} 
     DELET_OUT_VIEW_LENGTH: {0: 0}
     CONFIRMED_DET_SCORE: {0: 0.7} 
@@ -65,7 +66,7 @@ THRESHOLD:
 
 
 KALMAN_FILTER_POSE:
-  MOTION_MODE: {0: "CA"} # CV, CA, CTRA
+  MOTION_MODE: {0: "CV"} # CV, CA, CTRA
   CV:
     N: 4   # State Dimension
     M: 2   # Measure Dimension
@@ -73,8 +74,7 @@ KALMAN_FILTER_POSE:
       0:
         P: [1, 1, 500, 500]
         Q: [0.5, 0.5, 5, 5]
-        R: [0.02, 0.02]
-        # R: [0.1, 0.1]
+        R: [0.1, 0.1]
   CA:
     N: 6   # State Dimension
     M: 2   # Measure Dimension
@@ -100,7 +100,7 @@ KALMAN_FILTER_SIZE:
     NOISE:
       0:
         P: [1.0, 1.0, 10.0, 10.0]
-        Q: [0.5, 0.5, 5, 5]
+        Q: [0.5, 0.5, 1.5, 1.5]
         R: [0.02, 0.02]
 
 KALMAN_FILTER_YAW:
