@@ -53,7 +53,8 @@ class BaseVersionTrackingDataset:
             if bbox["detection_score"]
             > input_score[self.cfg["CATEGORY_MAP_TO_NUMBER"][bbox["category"]]]
         ]
-        if self.cfg["DATASET"] == "nuscenes":
+
+        if self.cfg["DATASET"] == "nuscenes" or "waymo":
             if len(filtered_bboxes) != 0:
                 filtered_bboxes = filter_bboxes_with_nms(filtered_bboxes, self.cfg)
         for bbox in filtered_bboxes:

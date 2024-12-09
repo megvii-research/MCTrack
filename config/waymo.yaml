@@ -43,6 +43,7 @@ THRESHOLD:
     ONLINE: {0: 0.5, 1: 0.5, 2: 0.5}
     OFFLINE: {0: 0.5, 1: 0.5, 2: 0.5}
   COST_STATE_PREDICT_RATION: {0: 0.5, 1: 0.5, 2: 0.5}
+  NMS_THRE: {0: 0.04, 1: 0.08, 2: 0.08}  
   BEV:
     COST_THRE: {0: 1.5, 1: 1.9, 2: 2.2} 
     WEIGHT_RO_GDIOU: {
@@ -80,7 +81,7 @@ KALMAN_FILTER_POSE:
         R: [2.0, 2.0]
       2:
         P: [1.0, 1.0, 10.0, 10.0]
-        Q: [0.5, 0.5, 1.5, 1.5]
+        Q: [1.0, 1.0, 2.0, 2.0]
         R: [0.1, 0.1]
   CA:
     N: 6   # State Dimension

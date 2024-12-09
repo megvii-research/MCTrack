@@ -588,7 +588,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "--raw_data_path",
         type=str,
-        default="s3://wangxiyang/open_datasets/nuscenes/raw_data/",
+        default="/data/projects/datasets/nuScenes/nuscenes/raw_data/",
     )
     parser.add_argument("--dets_path", type=str, default="data/nuscenes/detectors/")
     parser.add_argument("--save_path", type=str, default="data/base_version/nuscenes")
