@@ -10,8 +10,8 @@
 </div>
 
 <p align="center">
-  <a href="https://paperswithcode.com/sota/multiple-object-tracking-on-kitti-tracking?p=mctrack-a-unified-3d-multi-object-tracking">
-    <img src="https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/mctrack-a-unified-3d-multi-object-tracking/multiple-object-tracking-on-kitti-tracking" alt="PWC">
+  <a href="https://paperswithcode.com/sota/3d-multi-object-tracking-on-kitti-1?p=mctrack-a-unified-3d-multi-object-tracking">
+    <img src="https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/mctrack-a-unified-3d-multi-object-tracking/3d-multi-object-tracking-on-kitti-1" alt="PWC">
   </a>
 </div>
 
@@ -51,15 +51,15 @@ This paper introduces MCTrack, a new 3D multi-object tracking method that achiev
 
 | **Method** | **Detector** | **Set** | **HOTA** | **MOTA** | **TP** | **FP** | **IDSW** |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| **MCTrack** | VirConv | test | 80.78 | 89.82 | 32207 | 2185 | 64  |
-| **MCTrack** | VirConv | train | 82.60 | 85.61 | 22107 | 1468 | 32  |
+| **MCTrack** | VirConv | test | 81.07 | 89.81 | 32367 | 2025 | 46  |
+| **MCTrack** | VirConv | train | 82.65 | 85.19 | 22186 | 1659 | 22  |
 
 #### offline
 
 | **Method** | **Detector** | **Set** | **HOTA** | **MOTA** | **TP** | **FP** | **IDSW** |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| **MCTrack** | VirConv | test | 82.56 | 91.64 | 32064 | 2328 | 12  |
-| **MCTrack** | VirConv | train | 83.88 | 86.61 | 22112 | 1261 | 3  |
+| **MCTrack** | VirConv | test | 82.75 | 91.79 | 32095 | 2297 | 11  |
+| **MCTrack** | VirConv | train | 83.89 | 86.56 | 22150 | 1311 | 3  |
 
 ### [nuScenes](https://www.nuscenes.org/tracking?externalData=all&mapData=all&modalities=Any)
 
@@ -327,19 +327,19 @@ $ pip install -r requirements.txt
 
 - In the detection part, many thanks to the following open-source projects:
   
-  - [CTRL]([GitHub - tusen-ai/SST: Code for a series of work in LiDAR perception, including SST (CVPR 22), FSD (NeurIPS 22), FSD++ (TPAMI 23), FSDv2, and CTRL (ICCV 23, oral).](https://github.com/tusen-ai/SST?tab=readme-ov-file))
+  - [CTRL](https://github.com/tusen-ai/SST?tab=readme-ov-file)
     
-  - [VirConv]([GitHub - hailanyi/VirConv: Virtual Sparse Convolution for Multimodal 3D Object Detection](https://github.com/hailanyi/VirConv))
+  - [VirConv](https://github.com/hailanyi/VirConv)
     
-  - [CenterPoint]([GitHub - tianweiy/CenterPoint](https://github.com/tianweiy/CenterPoint))
+  - [CenterPoint](https://github.com/tianweiy/CenterPoint)
     
 - In the tracking part, many thanks to the following open-source projects:
   
-  - [PC3T]([GitHub - hailanyi/3D-Multi-Object-Tracker: A project for 3D multi-object tracking](https://github.com/hailanyi/3D-Multi-Object-Tracker))
+  - [PC3T](https://github.com/hailanyi/3D-Multi-Object-Tracker)
     
-  - [Poly-MOT]([GitHub - lixiaoyu2000/Poly-MOT: Official Repo For IROS 2023 Accepted Paper &quot;Poly-MOT&quot;](https://github.com/lixiaoyu2000/Poly-MOT))
+  - [Poly-MOT](https://github.com/lixiaoyu2000/Poly-MOT)
 
-  - [ImmortalTracker]([GitHub - esdolo/ImmortalTracker: Official implementation of Immortal Tracker: Tracklet Never Dies](https://github.com/esdolo/ImmortalTracker))
+  - [ImmortalTracker](https://github.com/esdolo/ImmortalTracker)
     
 
 ## 7. Citation

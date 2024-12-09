@@ -11,7 +11,7 @@ DATASET_ROOT: "data/kitti/datasets/"
 DETECTIONS_ROOT: "data/base_version/kitti/"
 SAVE_PATH: 'results/kitti'
 TRACKING_MODE: 'GLOBAL' # ONLINE / GLOBAL
-IS_RV_MATCHING: False  # True / False
+IS_RV_MATCHING: True  # True / False
 FRAME_RATE: 10
 # TRACKING_SEQS: [12]
 # TRACKING_SEQS:  [1,6,8,10,12,13,14,15,16,18,19]
@@ -34,7 +34,7 @@ MATCHING:
     # Predict, BackPredict, Fusion
     COST_STATE: {0: "Predict"} 
     # iou_2d, iou_2d, diou_2d, sdiou_2d, ro_gdiou_2d
-    COST_MODE: {0: "DIOU_2D"} 
+    COST_MODE: {0: "SDIOU_2D"} 
     MATCHING_MODE : Greedy  # Hungarian, Greedy
 
 
@@ -42,8 +42,8 @@ MATCHING:
 THRESHOLD:
   GLOBAL_TRACK_SCORE: 1.4
   INPUT_SCORE: 
-    ONLINE: {0: 0.5}
-    OFFLINE: {0: 0.3775}
+    ONLINE: {0: 0.435}
+    OFFLINE: {0: 0.365}
   COST_STATE_PREDICT_RATION: {0: 0.5}
   NMS_THRE: {0: 0.08} 
   BEV:
@@ -51,11 +51,11 @@ THRESHOLD:
     # Notes: You need to ensure that w1 + w2 = 2 , otherwise you will need to readjust the threshold of RO_GDIOU.
     WEIGHT_RO_GDIOU: {0: {"w1": 1.0, "w2": 1.0}}
   RV:
-    COST_THRE: {0: 0.5} 
+    COST_THRE: {0: -0.3} 
 
   TRAJECTORY_THRE:
     CACHE_BBOX_LENGTH: {0: 1000} 
-    PREDICT_BBOX_LENGTH: {0: 16} 
+    PREDICT_BBOX_LENGTH: {0: 22} 
     MAX_UNMATCH_LENGTH: {0: 16} 
     CONFIRMED_TRACK_LENGTH: {0: 1} 
     DELET_OUT_VIEW_LENGTH: {0: 0}
