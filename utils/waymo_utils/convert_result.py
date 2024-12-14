@@ -50,12 +50,12 @@ def save_results_waymo(tracking_results, save_path):
             for track_id, track in traj.items():
                 bbox = track
                 box_result = BBox(
-                    x=float(bbox.global_xyz[0]),
-                    y=float(bbox.global_xyz[1]),
-                    z=float(bbox.global_xyz[2]),
-                    l=float(bbox.lwh[0]),
-                    w=float(bbox.lwh[1]),
-                    h=float(bbox.lwh[2]),
+                    x=float(bbox.global_xyz_lwh_yaw_fusion[0]),
+                    y=float(bbox.global_xyz_lwh_yaw_fusion[1]),
+                    z=float(bbox.global_xyz_lwh_yaw_fusion[2]),
+                    l=float(bbox.lwh_fusion[0]),
+                    w=float(bbox.lwh_fusion[1]),
+                    h=float(bbox.lwh_fusion[2]),
                     o=float(bbox.global_yaw),
                 )
                 box_result.s = float(bbox.det_score)

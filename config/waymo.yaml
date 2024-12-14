@@ -43,8 +43,9 @@ THRESHOLD:
     ONLINE: {0: 0.5, 1: 0.5, 2: 0.5}
     OFFLINE: {0: 0.5, 1: 0.5, 2: 0.5}
   COST_STATE_PREDICT_RATION: {0: 0.5, 1: 0.5, 2: 0.5}
+  NMS_THRE: {0: 0.04, 1: 0.08, 2: 0.08}  
   BEV:
-    COST_THRE: {0: 1.5, 1: 1.9, 2: 2.2} 
+    COST_THRE: {0: 1.5, 1: 1.4, 2: 2.2} 
     WEIGHT_RO_GDIOU: {
       0: {"w1": 1.0, "w2": 1.0}, 
       1: {"w1": 1.0, "w2": 1.0}, 
@@ -56,7 +57,7 @@ THRESHOLD:
   TRAJECTORY_THRE:
     MAX_UNMATCH_LENGTH: {0: 3, 1: 2, 2: 2}
     CACHE_BBOX_LENGTH: {0: 20, 1: 16, 2: 16}
-    PREDICT_BBOX_LENGTH: {0: 30, 1: 25, 2: 30} 
+    PREDICT_BBOX_LENGTH: {0: 40, 1: 25, 2: 30} 
     CONFIRMED_TRACK_LENGTH: {0: 0, 1: 0, 2: 0} 
     DELET_OUT_VIEW_LENGTH: {0: 0, 1: 0, 2: 0}
     CONFIRMED_DET_SCORE: {0: 0, 1: 0, 2: 0} 
@@ -77,10 +78,10 @@ KALMAN_FILTER_POSE:
       1:
         P: [1.0, 1.0, 10.0, 10.0]
         Q: [0.5, 0.5, 1.5, 1.5]
-        R: [2.0, 2.0]
+        R: [0.1, 0.1]
       2:
         P: [1.0, 1.0, 10.0, 10.0]
-        Q: [0.5, 0.5, 1.5, 1.5]
+        Q: [1.0, 1.0, 2.0, 2.0]
         R: [0.1, 0.1]
   CA:
     N: 6   # State Dimension

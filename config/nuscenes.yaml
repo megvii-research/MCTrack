@@ -7,8 +7,7 @@ DATASET: "nuscenes"
 # dataset info
 SPLIT: "val" # val, test
 DETECTOR: centerpoint  # centerpoint, largekernel
-DATASET_ROOT: "s3://wangxiyang/open_datasets/nuscenes/raw_data/" 
-# DATASET_ROOT: "data/nuscenes/datasets/"  # 开源用这个
+DATASET_ROOT: "data/nuscenes/datasets/" 
 DETECTIONS_ROOT: "data/base_version/nuscenes/"
 SAVE_PATH: "results/"
 TRACKING_MODE: 'ONLINE' # ONLINE / GLOBAL
