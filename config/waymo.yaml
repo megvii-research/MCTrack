@@ -15,9 +15,9 @@ FRAME_RATE: 10
 
 CATEGORY_LIST: ["car", "pedestrian", "bicycle"]
 CATEGORY_MAP_TO_NUMBER : {
-    "car": 0,
+    # "car": 0,
     "pedestrian": 1,
-    "bicycle": 2
+    # "bicycle": 2
 }
 
 
