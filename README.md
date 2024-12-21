@@ -1,3 +1,4 @@
+
 <div  align=center><img src="./docs/MC_logo.png" width="55%"></div>
 
 ## <p align=center>MCTrack: A Unified 3D Multi-Object Tracking Framework for Autonomous</p> 
@@ -322,6 +323,11 @@ $ pip install -r requirements.txt
   $ python evaluation/eval_motion.py
   ```
 - You will then obtain the results of the motion metric evaluation. The ```config/nuscenes_motion_eval.yaml``` file contains the parameters for motion metric evaluation.
+
+🌟 Don't forget to drop us a star on GitHub and follow the repo to stay up to date!
+
+[![Star History Chart](https://api.star-history.com/svg?repos=megvii-research/MCTrack&type=Date)](https://star-history.com/#megvii-research/MCTrack&Date)
+
 
 ## 6. Acknowledgement
 
