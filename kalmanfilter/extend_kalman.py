@@ -20,7 +20,7 @@ class KF_YAW(KF_Base):
     def __init__(self, n=2, m=2, dt=0.1, P=None, Q=None, R=None, init_x=None, cfg=None):
         KF_Base.__init__(self, n=n, m=m, P=P, Q=Q, R=R, init_x=init_x, cfg=cfg)
         self.dt = dt
-        self.JH = np.matrix([[1.0, 0.0], [1.0, 0.0]])
+        self.JH = np.matrix([[1.0, 0.0], [0.0, 1.0]])
         self.F = self.getF(self.x)
         self.H = self.getH(self.x)
 
