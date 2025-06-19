@@ -37,6 +37,7 @@ This paper introduces MCTrack, a new 3D multi-object tracking method that achiev
 
 ## 1. News
 
+- 2025-06-16. MCTrack is accepted to IROS 2025. 
 - **[🔥🔥🔥2024-10-08]**. The code has been released.🙌
 - 2024-09-24. MCTrack is released on [arXiv](https://arxiv.org/).
 - 2024-09-01. We rank **2nd** among all methods on **Waymo** Dataset for [MOT](https://waymo.com/open/challenges/2020/3d-tracking/).
