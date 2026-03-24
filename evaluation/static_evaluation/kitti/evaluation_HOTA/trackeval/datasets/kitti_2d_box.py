@@ -149,7 +149,7 @@ class Kitti2DBox(_BaseDataset):
             if is_gt:
                 file = os.path.join(self.gt_fol, 'label_02', seq + '.txt')
             else:
-                file = os.path.join(self.tracker_fol, "val", self.tracker_sub_fol, seq + '.txt')
+                file = os.path.join(self.tracker_fol, self.config['SPLIT_TO_EVAL'], self.tracker_sub_fol, seq + '.txt')
 
         # Ignore regions
         if is_gt:
